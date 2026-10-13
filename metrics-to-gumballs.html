@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Mang's Gumball Unit Conversion Table</title>
+</head>
+<body>
+
+<h1>Metric Units to Gumball Units</h1>
+
+
+<input type="number" id="length-input" placeholder="Enter length in meters">
+m = <a id="length-conversion">0</a> gumballs<br>
+<input type="number" id="weight-input" placeholder="Enter weight in grams">
+g = <a id="weight-conversion">0</a> gumballs<br>
+<input type="number" id="seconds-input" placeholder="Enter time in seconds">
+s = <a id="seconds-conversion">0</a> gumballs<br>
+<input type="number" id="energy-input" placeholder="Enter energy in joules">
+J = <a id="energy-conversion">0</a> gumballs<br>
+<input type="number" id="volume-input" placeholder="Enter volume in cubic meters">
+m³ = <a id="volume-conversion">0</a> gumballs<br>
+<input type="number" id="area-input" placeholder="Enter area in square meters">
+m² = <a id="area-conversion">0</a> gumballs<br>
+</a>
+<input type="number" id="force-input" placeholder="Enter force in newtons">
+N = <a id="force-conversion">0</a> gumballs<br>
+</a>
+<input type="number" id="explosive-force-input" placeholder="Enter explosive force in kil
+otons of TNT">
+kilotons of TNT = <a id="explosive-force-conversion">0</a> gumballs<br>
+<input type="number" id="temperature-input" placeholder="Enter temperature in Celsius">
+°C = <a id="temperature-conversion">0</a> gumballs<br>
+<script>
+    gumball_conversion_list = {
+        "length": 0.0254,
+        "money": 0.5,
+        "seconds" : 8.466e-11,
+        "weight": 9.36,
+        "energy" : 41840,
+        "volume" : 8.58026671e-6,
+        "area": 0.002026,
+        "force" : 0.092,
+        "explosive force" : 1e-5,
+    }
+    unit_list = {
+        "length": "m",
+        "money": "€",
+        "seconds" : "s",
+        "weight": "g",
+        "energy" : "J",
+        "volume" : "m²",
+        "area": "m³",
+        "force" : "N",
+        "explosive force" : "kilotons of TNT",
+        "temperature" : "°C"
+    }
+
+    // Get references to the input fields and output elements into Dictionary
+    inputFields = {
+        "length": document.getElementById("length-input"),
+        "weight": document.getElementById("weight-input"),
+        "seconds": document.getElementById("seconds-input"),
+        "energy": document.getElementById("energy-input"),
+        "volume": document.getElementById("volume-input"),
+        "area": document.getElementById("area-input"),
+        "force": document.getElementById("force-input"),
+        "explosive force": document.getElementById("explosive-force-input"),
+        
+    }
+    outputElements = {
+        "length": document.getElementById("length-conversion"),
+        "weight": document.getElementById("weight-conversion"),
+        "seconds": document.getElementById("seconds-conversion"),
+        "energy": document.getElementById("energy-conversion"),
+        "volume": document.getElementById("volume-conversion"),
+        "area": document.getElementById("area-conversion"),
+        "force": document.getElementById("force-conversion"),
+        "explosive force": document.getElementById("explosive-force-conversion")
+    }
+
+    // Add event listeners for each input field
+    for (let unit in inputFields) {
+        inputFields[unit].addEventListener("input", function() {
+            let metricValue = parseFloat(inputFields[unit].value);
+            if (isNaN(metricValue)) {
+                outputElements[unit].textContent = "Please enter a valid number.";
+                return;
+            } else{
+                outputElements[unit].innerHTML = metricValue / gumball_conversion_list[unit];
+            }
+        });
+    }
+    temperatureInput = document.getElementById("temperature-input");
+    temperatureOutput = document.getElementById("temperature-conversion");
+    temperatureInput.addEventListener("input", function() {
+        let temperatureValue = parseFloat(temperatureInput.value);
+        if (isNaN(temperatureValue)) {
+            temperatureOutput.textContent = "Please enter a valid number.";
+            return;
+        } else{
+            temperatureOutput.innerHTML = (temperatureValue + 11.555) / 0.243;
+        }
+    });
+</script>
+</body>
+</html>

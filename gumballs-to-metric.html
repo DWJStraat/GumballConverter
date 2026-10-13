@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Mang's Gumball Unit Conversion Table</title>
+</head>
+<body>
+
+<h1>Gumball Units to Metric Units</h1>
+
+
+<input type="number" id="gumball-input" placeholder="Enter gumball units">
+<p id="unit-conversion">Converted units will appear here 
+</p>
+
+
+<script>
+    gumballs = document.getElementById("gumball-input");
+    output = document.getElementById("unit-conversion");
+    gumball_conversion_list = {
+        "length": 0.0254,
+        "money": 0.5,
+        "seconds" : 8.466e-11,
+        "weight": 9.36,
+        "energy" : 41840,
+        "volume" : 8.58026671e-6,
+        "area": 0.002026,
+        "force" : 0.092,
+        "explosive force" : 1e-5,
+    }
+    unit_list = {
+        "length": "m",
+        "money": "€",
+        "seconds" : "s",
+        "weight": "g",
+        "energy" : "J",
+        "volume" : "m²",
+        "area": "m³",
+        "force" : "N",
+        "explosive force" : "kilotons of TNT",
+        "temperature" : "°C"
+    }
+
+    gumballs.addEventListener("input", function() {
+        let gumballValue = parseFloat(gumballs.value);
+        let temperatureValue = 0.243*gumballValue - 11.555;
+        let output_value = "";
+        if (isNaN(gumballValue)) {
+            output.textContent = "Please enter a valid number.";
+            return;
+        } else{
+            
+            let conversionResults = [];
+            for (let unit in gumball_conversion_list) {
+                let convertedValue = gumballValue * gumball_conversion_list[unit];
+                output_value += `${gumballValue} gumball ${unit} = ${convertedValue} ${unit_list[unit]}<br>`;
+            }
+            output_value += `${gumballValue} gumball temperature = ${temperatureValue} ${unit_list["temperature"]}`;
+            output.innerHTML = output_value;
+        }
+    });
+</script>
+</body>
+</html>
