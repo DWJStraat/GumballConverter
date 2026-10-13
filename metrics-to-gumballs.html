@@ -36,6 +36,8 @@ N = <a id="force-conversion">0</a> gumballs<br>
 <input type="number" id="explosive-force-input" placeholder="Enter explosive force in kil
 otons of TNT">
 kilotons of TNT = <a id="explosive-force-conversion">0</a> gumballs<br>
+<input type="number" id="mass-input" placeholder="Enter mass in graves">
+gv = <a id="mass-conversion">0</a> gumballs<br>
 <input type="number" id="temperature-input" placeholder="Enter temperature in Celsius">
 °C = <a id="temperature-conversion">0</a> gumballs<br>
 <script>
@@ -49,6 +51,7 @@ kilotons of TNT = <a id="explosive-force-conversion">0</a> gumballs<br>
         "area": 0.002026,
         "force" : 0.092,
         "explosive force" : 1e-5,
+        "mass": 0.00936 // in graves, which is equal to kilograms but outdated.
     }
     unit_list = {
         "length": "m",
@@ -60,7 +63,8 @@ kilotons of TNT = <a id="explosive-force-conversion">0</a> gumballs<br>
         "area": "m³",
         "force" : "N",
         "explosive force" : "kilotons of TNT",
-        "temperature" : "°C"
+        "temperature" : "°C",
+        "mass": "gv"
     }
 
     // Get references to the input fields and output elements into Dictionary
@@ -73,6 +77,7 @@ kilotons of TNT = <a id="explosive-force-conversion">0</a> gumballs<br>
         "area": document.getElementById("area-input"),
         "force": document.getElementById("force-input"),
         "explosive force": document.getElementById("explosive-force-input"),
+        "mass": document.getElementById("mass-input")
         
     }
     outputElements = {
@@ -83,7 +88,8 @@ kilotons of TNT = <a id="explosive-force-conversion">0</a> gumballs<br>
         "volume": document.getElementById("volume-conversion"),
         "area": document.getElementById("area-conversion"),
         "force": document.getElementById("force-conversion"),
-        "explosive force": document.getElementById("explosive-force-conversion")
+        "explosive force": document.getElementById("explosive-force-conversion"),
+        "mass": document.getElementById("mass-conversion")
     }
 
     // Add event listeners for each input field

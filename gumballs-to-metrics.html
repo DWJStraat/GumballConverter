@@ -35,6 +35,7 @@ function googleTranslateElementInit() {
         "area": 0.002026,
         "force" : 0.092,
         "explosive force" : 1e-5,
+        "mass": 0.00936 // in graves, which is equal to kilograms but outdated.
     }
     unit_list = {
         "length": "m",
@@ -46,7 +47,8 @@ function googleTranslateElementInit() {
         "area": "m³",
         "force" : "N",
         "explosive force" : "kilotons of TNT",
-        "temperature" : "°C"
+        "temperature" : "°C",
+        "mass": "gv"
     }
 
     gumballs.addEventListener("input", function() {
